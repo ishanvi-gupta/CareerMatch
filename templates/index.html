@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 30px;
+        }
+        .box {
+            background: white;
+            padding: 25px;
+            width: 600px;
+            margin: auto;
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+        }
+        textarea, input {
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            background: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>AI Resume Analyzer</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Upload Resume (PDF only)</label>
+        <input type="file" name="resume" required>
+
+        <label>Paste Job Description</label>
+        <textarea name="job_desc" rows="5" required></textarea>
+
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if resume_skills %}
+    <div class="result">
+        <h3>Resume Skills:</h3>
+        <p>{{ resume_skills }}</p>
+
+        <h3>Job Required Skills:</h3>
+        <p>{{ job_skills }}</p>
+
+        <h3>Match Percentage:</h3>
+        <p>{{ match_percentage }}%</p>
+
+        <h3>Missing Skills:</h3>
+        <p>{{ missing_skills }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
